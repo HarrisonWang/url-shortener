@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .bg-factory {
+    background-color: #E2E1CF;
+  }
+}
+
+body {
+  @apply bg-factory text-neutral-800;
+}
+
+
+
+body {
+  font-family: 'Comic Sans MS', sans-serif;
+}
+
+/* 自定义滚动条样式 */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #DAD9C4;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #C3C2AC;
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

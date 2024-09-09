@@ -1,0 +1,35 @@
+# Node.js
+node_modules/
+npm-debug.log
+
+# Next.js
+.next/
+out/
+
+# Environment variables
+.env
+.env.*
+
+# Logs
+logs/
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+
+# Build files
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.swp
+
+# Other
+*.bak
+*.orig
