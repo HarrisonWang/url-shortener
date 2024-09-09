@@ -5,7 +5,27 @@ import HeaderNav from '../components/HeaderNav'
 export const metadata: Metadata = {
   title: 'URL Shortener - Free URL Shortener',
   description: 'Shorten your URLs 100% automatically and for free with URL Shortener.',
-  keywords: 'URL, URL Shortener, Free URL Shortener, Bulk URL Shortener, URL Shortener'
+  keywords: 'URL, URL Shortener, Free URL Shortener, Bulk URL Shortener, URL Shortener',
+  openGraph: {
+    title: 'URL Shortener - Free URL Shortener',
+    description: 'Shorten your URLs 100% automatically and for free with URL Shortener.',
+    images: [
+      {
+        url: '/og-image.webp', 
+        width: 1200,
+        height: 630,
+        alt: 'URL Shortener - Free URL Shortener',
+      },
+    ],
+    url: 'https://url-shortener-flame.vercel.app/', 
+    siteName: 'URL Shortener',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'URL Shortener - Free URL Shortener',
+    description: 'Shorten your URLs 100% automatically and for free with URL Shortener.',
+    images: ['/og-image.webp'],
+  },
 }
 
 export default function RootLayout({
