@@ -17,7 +17,7 @@ export const metadata: Metadata = {
         alt: 'URL Shortener - Free URL Shortener',
       },
     ],
-    url: 'https://url-shortener-flame.vercel.app/', 
+    url: 'https://url.xiaowangye.org', 
     siteName: 'URL Shortener',
   },
   twitter: {
@@ -42,7 +42,7 @@ export default function RootLayout({
             {children}
           </div>
         </main>
-        <footer className='px-6 pt-4 sm:pt-0 pb-6 text-neutral-500 text-center'>Copyright © 2024 <a href='https://xiaowangye.org' title='Harrison Wang' target='_blank'>Harrison Wang</a></footer>
+        <footer className='px-6 pt-4 sm:pt-0 pb-6 text-neutral-500 text-center'>Copyright © 2024 <a href='https://xiaowangye.org' title='Xiaowangye' target='_blank'>Xiaowangye</a></footer>
       </body>
     </html>
   )

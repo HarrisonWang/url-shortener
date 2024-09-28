@@ -4,36 +4,45 @@ import { nanoid } from 'nanoid';
 
 export async function POST(request: NextRequest) {
   try {
-    const { url } = await request.json();
+    const { url, customSlug } = await request.json();
     if (!url) {
-      return NextResponse.json({ error: '缺少URL参数' }, { status: 400 });
+      return NextResponse.json({ error: 'URL parameter is missing' }, { status: 400 });
     }
 
-    // 修改查询，不使用 .single()
-    const { data, error } = await supabase
+    let slug = customSlug || nanoid(8);
+
+    // Check if custom slug already exists
+    if (customSlug) {
+      const { data: existingSlug } = await supabase
+        .from('links')
+        .select('slug')
+        .eq('slug', customSlug)
+        .single();
+
+      if (existingSlug) {
+        return NextResponse.json({ error: 'Custom short link already exists, please try another one' }, { status: 400 });
+      }
+    }
+
+    // Check if URL already exists
+    const { data: existingUrl } = await supabase
       .from('links')
       .select('url, slug')
       .eq('url', url)
       .maybeSingle();
-    
-    if (error) {
-      console.error('Supabase查询错误:', error);
-      throw error;
-    }
 
-    if (data) {
+    if (existingUrl) {
       return NextResponse.json({
-        slug: data.slug,
-        link: `${request.nextUrl.origin}/${data.slug}`
+        slug: existingUrl.slug,
+        link: `${request.nextUrl.origin}/${existingUrl.slug}`
       }, { status: 200 });
     }
 
-    // 如果没有找到匹配的记录，创建新的短链接
-    const slug = nanoid(8);
+    // Create new short link
     const ua = request.headers.get('user-agent') || '';
     const ip = request.ip || request.headers.get('x-forwarded-for') || '';
 
-    const { error: insertError } = await supabase
+    const { data: newLink, error: insertError } = await supabase
       .from('links')
       .insert({
         url,
@@ -41,23 +50,26 @@ export async function POST(request: NextRequest) {
         ua,
         ip,
         status: 1
-      });
+      })
+      .select()
+      .single();
 
     if (insertError) {
-      console.error('插入新记录错误:', insertError);
+      console.error('Error inserting new record:', insertError);
       throw insertError;
     }
 
     return NextResponse.json({
-      slug,
-      link: `${request.nextUrl.origin}/${slug}`
+      slug: newLink.slug,
+      link: `${request.nextUrl.origin}/${newLink.slug}`
     }, { status: 201 });
+
   } catch (error) {
-    console.error('创建短链接失败:', error);
+    console.error('Failed to create short link:', error);
     if (error instanceof Error) {
-      console.error('错误详情:', error.message);
-      console.error('错误堆栈:', error.stack);
+      console.error('Error details:', error.message);
+      console.error('Error stack:', error.stack);
     }
-    return NextResponse.json({ error: '创建短链接失败' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to create short link' }, { status: 500 });
   }
 }

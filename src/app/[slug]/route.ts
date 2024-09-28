@@ -8,7 +8,7 @@ export async function GET(
   try {
     const { slug } = params;
 
-    // 查询links表获取原始URL
+    // Query links table to get original URL
     const { data, error } = await supabase
       .from('links')
       .select('url')
@@ -16,10 +16,10 @@ export async function GET(
       .single();
 
     if (error || !data) {
-      return NextResponse.json({ error: '短链接不存在' }, { status: 404 });
+      return NextResponse.json({ error: 'Short link does not exist' }, { status: 404 });
     }
 
-    // 记录访问日志
+    // Record access log
     const ua = request.headers.get('user-agent') || '';
     const ip = request.ip || request.headers.get('x-forwarded-for') || '';
     const referer = request.headers.get('referer') || '';
@@ -32,11 +32,11 @@ export async function GET(
       ip
     });
 
-    // 302重定向到原始URL
+    // 302 redirect to original URL
     return NextResponse.redirect(data.url, 302);
 
   } catch (error) {
-    console.error('重定向失败:', error);
-    return NextResponse.json({ error: '重定向失败' }, { status: 500 });
+    console.error('Redirect failed:', error);
+    return NextResponse.json({ error: 'Redirect failed' }, { status: 500 });
   }
 }
