@@ -42,10 +42,7 @@ export default function RootLayout({
             {children}
           </div>
         </main>
-        <div className="w-full">
-          <img src="/factory.svg" alt="Factory" className="w-full" />
-        </div>
-        <footer className='px-6 pt-4 sm:pt-0 pb-6 bg-neutral-800 text-neutral-500 text-center'>Copyright © 2024 <a href='https://xiaowangye.org' title='Harrison Wang' target='_blank'>Harrison Wang</a></footer>
+        <footer className='px-6 pt-4 sm:pt-0 pb-6 text-neutral-500 text-center'>Copyright © 2024 <a href='https://xiaowangye.org' title='Harrison Wang' target='_blank'>Harrison Wang</a></footer>
       </body>
     </html>
   )

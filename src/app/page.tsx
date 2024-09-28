@@ -48,6 +48,10 @@ export default function ShortenPage() {
     }
   };
 
+  const handleClear = () => {
+    setUrl('');
+  };
+
   return (
     <main className="flex flex-col items-center gap-4 w-full">
       <div className="text-center mb-4 w-full">
@@ -57,19 +61,32 @@ export default function ShortenPage() {
     <div className="w-full max-w-3xl bg-[#F1F0E2] p-6 rounded-2xl mt-4">
       <h2 className="text-xl font-bold mb-4">Create Short URL</h2>
       <form onSubmit={handleSubmit} className="mb-6">
-        <div className="mb-4">
+        <div className="mb-4 relative">
           <label htmlFor="url" className="block text-sm font-medium text-gray-700 mb-2">
             Type the URL you want to shorten
           </label>
-          <input
-            type="url"
-            id="url"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            required
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-            placeholder="https://xiaowangye.org"
-          />
+          <div className="relative">
+            <input
+              type="url"
+              id="url"
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              required
+              className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="https://xiaowangye.org"
+            />
+            {url && (
+              <button
+                type="button"
+                onClick={handleClear}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                </svg>
+              </button>
+            )}
+          </div>
         </div>
         <button
           type="submit"

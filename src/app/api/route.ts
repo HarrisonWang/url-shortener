@@ -9,12 +9,18 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: '缺少URL参数' }, { status: 400 });
     }
 
-    const { data } = await supabase
+    // 修改查询，不使用 .single()
+    const { data, error } = await supabase
       .from('links')
       .select('url, slug')
       .eq('url', url)
-      .single();
-    console.log('data', data);
+      .maybeSingle();
+    
+    if (error) {
+      console.error('Supabase查询错误:', error);
+      throw error;
+    }
+
     if (data) {
       return NextResponse.json({
         slug: data.slug,
@@ -22,12 +28,12 @@ export async function POST(request: NextRequest) {
       }, { status: 200 });
     }
 
-    const slug = nanoid(8); // 生成8位随机字符串作为短链接
+    // 如果没有找到匹配的记录，创建新的短链接
+    const slug = nanoid(8);
     const ua = request.headers.get('user-agent') || '';
     const ip = request.ip || request.headers.get('x-forwarded-for') || '';
 
-    // 插入links表
-    const { error: linkError } = await supabase
+    const { error: insertError } = await supabase
       .from('links')
       .insert({
         url,
@@ -37,8 +43,9 @@ export async function POST(request: NextRequest) {
         status: 1
       });
 
-    if (linkError) {
-      throw linkError;
+    if (insertError) {
+      console.error('插入新记录错误:', insertError);
+      throw insertError;
     }
 
     return NextResponse.json({
@@ -47,6 +54,10 @@ export async function POST(request: NextRequest) {
     }, { status: 201 });
   } catch (error) {
     console.error('创建短链接失败:', error);
+    if (error instanceof Error) {
+      console.error('错误详情:', error.message);
+      console.error('错误堆栈:', error.stack);
+    }
     return NextResponse.json({ error: '创建短链接失败' }, { status: 500 });
   }
 }
