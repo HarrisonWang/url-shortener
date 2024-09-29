@@ -42,7 +42,16 @@ export default function RootLayout({
             {children}
           </div>
         </main>
-        <footer className='px-6 pt-4 sm:pt-0 pb-6 text-neutral-500 text-center'>Copyright © 2024 <a href='https://xiaowangye.org' title='Xiaowangye' target='_blank'>Xiaowangye</a></footer>
+        <div className="w-full">
+          <img src="/factory.svg" alt="Factory" className="w-full" />
+        </div>
+        <footer className='px-6 pt-4 sm:pt-0 h-12 bg-neutral-800 text-neutral-500 text-center relative'>
+          <div className="inline-block">
+            Copyright © 2024 <a href='https://xiaowangye.org' title='Xiaowangye' target='_blank'>xiaowangye.org.</a>
+            Theme originally by <a href='https://x.com/decohack' title='Viggo' target='_blank'>Viggo</a>. 
+            <svg className="absolute right-6 top-0" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="M341.333333 341.333333c-95.914667 0-170.666667 74.752-170.666666 170.666667s74.752 170.666667 170.666666 170.666667h85.333334a42.666667 42.666667 0 1 1 0 85.333333H341.333333c-143.018667 0-256-112.981333-256-256s112.981333-256 256-256h85.333334a42.666667 42.666667 0 1 1 0 85.333333H341.333333z m213.333334-42.666666a42.666667 42.666667 0 0 1 42.666666-42.666667h85.333334c143.018667 0 256 112.981333 256 256s-112.981333 256-256 256h-85.333334a42.666667 42.666667 0 1 1 0-85.333333h85.333334c95.914667 0 170.666667-74.752 170.666666-170.666667s-74.752-170.666667-170.666666-170.666667h-85.333334a42.666667 42.666667 0 0 1-42.666666-42.666666z m-256 213.333333a42.666667 42.666667 0 0 1 42.666666-42.666667h341.333334a42.666667 42.666667 0 1 1 0 85.333334H341.333333a42.666667 42.666667 0 0 1-42.666666-42.666667z" fill="#737373"></path></svg>
+          </div>
+        </footer>
       </body>
     </html>
   )
