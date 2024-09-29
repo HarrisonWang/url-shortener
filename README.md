@@ -6,7 +6,7 @@ URL Shortener is a free tool designed to help users easily shorten long URLs. Ou
 
 ## About the Author
 
-This website is built by [Harrison Wang](https://x.com/voywang) using [Cursor](https://www.cursor.com/) and designed in [Figma](https://www.figma.com/).
+This website is built by [Harrison Wang](https://x.com/voywang) using [Cursor](https://www.cursor.com/) and theme originally by [Viggo](https://x.com/decohack).
 
 ## Features
 
@@ -18,39 +18,65 @@ This website is built by [Harrison Wang](https://x.com/voywang) using [Cursor](h
 
 ## Installation and Running
 
-### 1. Clone the Repository
+### 1. Deploy to Vercel
+
+Click the button below to deploy to Vercel:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FHarrisonWang%2Furl-shortener&env=NEXT_PUBLIC_SUPABASE_URL&env=NEXT_PUBLIC_SUPABASE_KEY&project-name=url-shortener&repository-name=url-shortener)
+
+### 2. Run Locally
+
+#### 2.1 Clone the Repository
 
 ```bash
 git clone https://github.com/harrisonwang/url-shortener.git
 ```
 
-### 2. Install Dependencies
+#### 2.2 Install Dependencies
 
 ```bash
 npm i
 ```
 
-### 3. Create a `.env.local` file
+#### 2.3 Create a `.env.local` file
 
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ```
 
-### 4. Run the Development Server
+#### 2.4 Initialize Database Tables
+
+Run the following SQL commands in your Supabase project to create the necessary tables:
+
+```sql
+create table
+  public.links (
+    id serial not null,
+    url text null,
+    slug text null,
+    ua text null,
+    ip text null,
+    status integer null,
+    created_at timestamp without time zone null default current_timestamp,
+    constraint links_pkey primary key (id)
+  ) tablespace pg_default;
+
+create table
+  public.logs (
+    id serial not null,
+    url text null,
+    slug text null,
+    referer text null,
+    ua text null,
+    ip text null,
+    created_at timestamp without time zone null default current_timestamp,
+    constraint logs_pkey primary key (id)
+  ) tablespace pg_default;
+```
+
+#### 2.5 Run the Development Server
 
 ```bash
 npm run dev
-```
-
-### 5. Build the Project
-
-```bash
-npm run build
-```
-
-### 6. Start the Production Server
-
-```bash
-npm run start
 ```
