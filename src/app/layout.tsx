@@ -45,11 +45,13 @@ export default function RootLayout({
         <div className="w-full">
           <img src="/factory.svg" alt="Factory" className="w-full" />
         </div>
-        <footer className='px-6 pt-4 sm:pt-0 h-12 bg-neutral-800 text-neutral-500 text-center relative'>
-          <div className="inline-block">
-            Copyright © 2024 <a href='https://xiaowangye.org' title='Xiaowangye' target='_blank'>xiaowangye.org.</a>
-            Theme originally by <a href='https://x.com/decohack' title='Viggo' target='_blank'>Viggo</a>. 
-            <svg className="absolute right-6 top-0" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="M341.333333 341.333333c-95.914667 0-170.666667 74.752-170.666666 170.666667s74.752 170.666667 170.666666 170.666667h85.333334a42.666667 42.666667 0 1 1 0 85.333333H341.333333c-143.018667 0-256-112.981333-256-256s112.981333-256 256-256h85.333334a42.666667 42.666667 0 1 1 0 85.333333H341.333333z m213.333334-42.666666a42.666667 42.666667 0 0 1 42.666666-42.666667h85.333334c143.018667 0 256 112.981333 256 256s-112.981333 256-256 256h-85.333334a42.666667 42.666667 0 1 1 0-85.333333h85.333334c95.914667 0 170.666667-74.752 170.666666-170.666667s-74.752-170.666667-170.666666-170.666667h-85.333334a42.666667 42.666667 0 0 1-42.666666-42.666666z m-256 213.333333a42.666667 42.666667 0 0 1 42.666666-42.666667h341.333334a42.666667 42.666667 0 1 1 0 85.333334H341.333333a42.666667 42.666667 0 0 1-42.666666-42.666667z" fill="#737373"></path></svg>
+        <footer className='pb-6 bg-neutral-800 text-neutral-500 text-center relative'>
+          <div className="inline-flex items-center justify-center">
+            <svg className="w-6 h-6 fill-[#737373] mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" version="1.1" width="200" height="200"><path d="M341.333333 512a42.666667 42.666667 0 0 0 42.666667 42.666667h256a42.666667 42.666667 0 0 0 0-85.333334H384a42.666667 42.666667 0 0 0-42.666667 42.666667z"></path><path d="M384 682.666667H307.626667A176.213333 176.213333 0 0 1 128 527.786667 170.666667 170.666667 0 0 1 298.666667 341.333333h85.333333a42.666667 42.666667 0 0 0 0-85.333333H307.626667a262.4 262.4 0 0 0-262.826667 222.293333A256 256 0 0 0 298.666667 768h85.333333a42.666667 42.666667 0 0 0 0-85.333333zM981.333333 479.573333A262.826667 262.826667 0 0 0 715.093333 256h-64.426666C616.106667 256 597.333333 275.2 597.333333 298.666667a42.666667 42.666667 0 0 0 42.666667 42.666666h76.373333A176.213333 176.213333 0 0 1 896 496.213333 170.666667 170.666667 0 0 1 725.333333 682.666667h-85.333333a42.666667 42.666667 0 0 0 0 85.333333h85.333333a256 256 0 0 0 256-288.426667z"></path></svg>
+            <div className="flex flex-col sm:flex-row items-center">
+              <span className="sm:mr-2">© 2024 <a href='https://xiaowangye.org' title='Xiaowangye' target='_blank' rel="noopener noreferrer">xiaowangye.org.</a></span>
+              <span>Theme originally by <a href='https://x.com/decohack' title='Viggo' target='_blank' rel="noopener noreferrer">Viggo</a>.</span>
+            </div>
           </div>
         </footer>
       </body>
