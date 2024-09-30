@@ -15,8 +15,8 @@ COPY . .
 
 # 创建一个构建和启动脚本
 RUN echo '#!/bin/sh' > start.sh && \
-    echo 'echo "NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL" > .env.local' >> start.sh && \
-    echo 'echo "NEXT_PUBLIC_SUPABASE_KEY=$NEXT_PUBLIC_SUPABASE_KEY" >> .env.local' >> start.sh && \
+    echo 'echo "NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL" > .env' >> start.sh && \
+    echo 'echo "NEXT_PUBLIC_SUPABASE_KEY=$NEXT_PUBLIC_SUPABASE_KEY" >> .env' >> start.sh && \
     echo 'npm run build && npm start' >> start.sh && \
     chmod +x start.sh
 
