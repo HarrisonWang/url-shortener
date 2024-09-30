@@ -1,6 +1,6 @@
 services:
   app:
-    build: .
+    image: iamxiaowangye/url-shortener
     ports:
       - "3000:3000"
     environment:
