@@ -24,28 +24,56 @@ Click the button below to deploy to Vercel:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FHarrisonWang%2Furl-shortener&env=NEXT_PUBLIC_SUPABASE_URL&env=NEXT_PUBLIC_SUPABASE_KEY&project-name=url-shortener&repository-name=url-shortener)
 
-### 2. Run Locally
+### 2. Run Docker
 
 #### 2.1 Clone the Repository
+
+```bash
+git clone https://github.com/voywang/url-shortener.git
+```
+
+#### 2.2 Build Docker Image
+
+```bash
+docker build -t url-shortener .
+```
+
+#### 2.3 Run Docker Container
+
+```bash
+# Run directly
+docker run -d -p 3000:3000 url-shortener
+
+# Or use docker-compose
+docker-compose up -d
+```
+
+#### 2.4 Access the Application
+
+Open your browser and visit `http://localhost:3000`, you should be able to see the URL short link generator interface.
+
+### 3. Run Locally
+
+#### 3.1 Clone the Repository
 
 ```bash
 git clone https://github.com/harrisonwang/url-shortener.git
 ```
 
-#### 2.2 Install Dependencies
+#### 3.2 Install Dependencies
 
 ```bash
 npm i
 ```
 
-#### 2.3 Create a `.env.local` file
+#### 3.3 Create a `.env` file
 
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ```
 
-#### 2.4 Initialize Database Tables
+#### 3.4 Initialize Database Tables
 
 Run the following SQL commands in your Supabase project to create the necessary tables:
 
@@ -75,7 +103,7 @@ create table
   ) tablespace pg_default;
 ```
 
-#### 2.5 Run the Development Server
+#### 3.5 Run the Development Server
 
 ```bash
 npm run dev

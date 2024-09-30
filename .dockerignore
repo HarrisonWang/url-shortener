@@ -1,0 +1,32 @@
+# Node.js 依赖目录
+node_modules
+
+# Next.js 构建输出
+.next
+
+# 环境变量文件
+.env*
+
+# 日志文件
+*.log
+
+# 操作系统生成的文件
+.DS_Store
+Thumbs.db
+
+# 编辑器配置文件
+.vscode
+.idea
+
+# Git 相关文件
+.git
+.gitignore
+
+# 测试文件
+__tests__
+*.test.js
+*.spec.js
+
+# 其他不需要的文件
+README.md
+LICENSE

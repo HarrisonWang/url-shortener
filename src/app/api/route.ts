@@ -2,6 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase-client';
 import { nanoid } from 'nanoid';
 
+function getBaseUrl(request: NextRequest): string {
+  const protocol = request.headers.get('x-forwarded-proto') || 'http';
+  const host = request.headers.get('host')
+  return `${protocol}://${host}`;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const { url, customSlug } = await request.json();
@@ -32,9 +38,10 @@ export async function POST(request: NextRequest) {
       .maybeSingle();
 
     if (existingUrl) {
+      const baseUrl = getBaseUrl(request);
       return NextResponse.json({
         slug: existingUrl.slug,
-        link: `${request.nextUrl.origin}/${existingUrl.slug}`
+        link: `${baseUrl}/${existingUrl.slug}`
       }, { status: 200 });
     }
 
@@ -59,9 +66,10 @@ export async function POST(request: NextRequest) {
       throw insertError;
     }
 
+    const baseUrl = getBaseUrl(request);
     return NextResponse.json({
       slug: newLink.slug,
-      link: `${request.nextUrl.origin}/${newLink.slug}`
+      link: `${baseUrl}/${newLink.slug}`
     }, { status: 201 });
 
   } catch (error) {
