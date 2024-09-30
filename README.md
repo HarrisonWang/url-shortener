@@ -44,8 +44,8 @@ docker build -t url-shortener .
 # Run directly
 docker run -d -p 3000:3000 url-shortener
 
-# Or use docker-compose
-docker-compose up -d
+# Or use docker compose
+docker compose up -d
 ```
 
 #### 2.4 Access the Application

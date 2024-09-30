@@ -44,8 +44,8 @@ docker build -t url-shortener .
 # 直接运行
 docker run -d -p 3000:3000 url-shortener
 
-# 或者使用 docker-compose
-docker-compose up -d
+# 或者使用 docker compose
+docker compose up -d
 ```
 
 #### 2.4 访问应用
