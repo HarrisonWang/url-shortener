@@ -32,23 +32,13 @@ Click the button below to deploy to Vercel:
 git clone https://github.com/harrisonwang/url-shortener.git
 ```
 
-#### 2.2 Build Docker Image
+#### 2.2 Run Docker Container
 
 ```bash
-docker build -t url-shortener .
-```
-
-#### 2.3 Run Docker Container
-
-```bash
-# Run directly
-docker run -d -p 3000:3000 url-shortener
-
-# Or use docker compose
 docker compose up -d
 ```
 
-#### 2.4 Access the Application
+#### 2.3 Access the Application
 
 Open your browser and visit `http://localhost:3000`, you should be able to see the URL short link generator interface.
 

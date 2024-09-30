@@ -32,23 +32,13 @@ URL 短链接生成器是一个免费工具，旨在帮助用户轻松缩短长 
 git clone https://github.com/harrisonwang/url-shortener.git
 ```
 
-#### 2.2 构建 Docker 镜像
+#### 2.2 运行 Docker 容器
 
 ```bash
-docker build -t url-shortener .
-```
-
-#### 2.3 运行 Docker 容器
-
-```bash
-# 直接运行
-docker run -d -p 3000:3000 url-shortener
-
-# 或者使用 docker compose
 docker compose up -d
 ```
 
-#### 2.4 访问应用
+#### 2.3 访问应用
 
 打开浏览器并访问 `http://localhost:3000`，您应该能够看到 URL 短链接生成器的界面。
 
