@@ -24,6 +24,13 @@ export default function ShortenPage() {
     setShortUrl('');
     setCopiedId(null);
 
+    // Add validation for custom slug
+    if (customSlug && !/^[a-zA-Z0-9]+$/.test(customSlug)) {
+      setError('Custom short link can only contain letters and numbers');
+      setIsLoading(false);
+      return;
+    }
+
     try {
       const response = await fetch('/api', {
         method: 'POST',
@@ -123,7 +130,7 @@ export default function ShortenPage() {
                 type="text"
                 id="customSlug"
                 value={customSlug}
-                onChange={(e) => setCustomSlug(e.target.value)}
+                onChange={(e) => setCustomSlug(e.target.value.replace(/[^a-zA-Z0-9]/g, ''))}
                 className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 placeholder="my-custom-slug"
               />
@@ -138,6 +145,9 @@ export default function ShortenPage() {
                   </svg>
                 </button>
               )}
+            </div>
+            <div className="mt-1 text-sm text-gray-500">
+              Custom short link can only contain letters and numbers
             </div>
           </div>
           <button
