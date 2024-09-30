@@ -29,7 +29,7 @@ Click the button below to deploy to Vercel:
 #### 2.1 Clone the Repository
 
 ```bash
-git clone https://github.com/voywang/url-shortener.git
+git clone https://github.com/harrisonwang/url-shortener.git
 ```
 
 #### 2.2 Build Docker Image

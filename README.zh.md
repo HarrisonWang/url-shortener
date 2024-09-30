@@ -29,7 +29,7 @@ URL 短链接生成器是一个免费工具，旨在帮助用户轻松缩短长 
 #### 2.1 克隆仓库
 
 ```bash
-git clone https://github.com/voywang/url-shortener.git
+git clone https://github.com/harrisonwang/url-shortener.git
 ```
 
 #### 2.2 构建 Docker 镜像
@@ -57,7 +57,7 @@ docker-compose up -d
 #### 3.1 克隆仓库
 
 ```bash
-git clone https://github.com/voywang/url-shortener.git
+git clone https://github.com/harrisonwang/url-shortener.git
 ```
 
 #### 3.2 安装依赖
