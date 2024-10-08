@@ -18,52 +18,7 @@ This website is built by [Harrison Wang](https://x.com/voywang) using [Cursor](h
 
 ## Installation and Running
 
-### 1. Deploy to Vercel
-
-Click the button below to deploy to Vercel:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FHarrisonWang%2Furl-shortener&env=NEXT_PUBLIC_SUPABASE_URL&env=NEXT_PUBLIC_SUPABASE_KEY&project-name=url-shortener&repository-name=url-shortener)
-
-### 2. Run Docker
-
-#### 2.1 Clone the Repository
-
-```bash
-git clone https://github.com/harrisonwang/url-shortener.git
-```
-
-#### 2.2 Run Docker Container
-
-```bash
-docker compose up -d
-```
-
-#### 2.3 Access the Application
-
-Open your browser and visit `http://localhost:3000`, you should be able to see the URL short link generator interface.
-
-### 3. Run Locally
-
-#### 3.1 Clone the Repository
-
-```bash
-git clone https://github.com/harrisonwang/url-shortener.git
-```
-
-#### 3.2 Install Dependencies
-
-```bash
-npm i
-```
-
-#### 3.3 Create a `.env` file
-
-```bash
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
-```
-
-#### 3.4 Initialize Database Tables
+### Prepare Supabase Project
 
 Run the following SQL commands in your Supabase project to create the necessary tables:
 
@@ -93,7 +48,72 @@ create table
   ) tablespace pg_default;
 ```
 
-#### 3.5 Run the Development Server
+### 1. Deploy to Vercel
+
+Click the button below to deploy to Vercel:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FHarrisonWang%2Furl-shortener&env=NEXT_PUBLIC_SUPABASE_URL&env=NEXT_PUBLIC_SUPABASE_KEY&project-name=url-shortener&repository-name=url-shortener)
+
+Configure the following environment variables:
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_KEY`
+
+### 2. Run Docker
+
+#### 2.1. Clone the Repository
+
+```bash
+git clone https://github.com/harrisonwang/url-shortener.git
+```
+
+#### 2.2. Rename `.env.example` to `.env` and set environment variables
+
+```bash
+mv .env.example .env
+```
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_KEY=
+```
+
+#### 2.3. Run Docker Container
+
+```bash
+docker compose up -d
+```
+
+#### 2.4. Access the Application
+
+Open your browser and visit `http://localhost:3000`, you should be able to see the URL short link generator interface.
+
+### 3. Run Locally
+
+#### 3.1. Clone the Repository
+
+```bash
+git clone https://github.com/harrisonwang/url-shortener.git
+```
+
+#### 3.2. Install Dependencies
+
+```bash
+npm i
+```
+
+#### 3.3. Rename `.env.example` to `.env` and set environment variables
+
+```bash
+mv .env.example .env
+```
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_KEY=
+```
+
+#### 3.4. Run the Development Server
 
 ```bash
 npm run dev
